@@ -71,9 +71,14 @@ def classes():
             anagramas[ordem] = lista
         else:                                    # Caso contrário
             anagramas[ordem] = [token]           # Cria-se uma nova chave para o dicionário
-  
+    
+    total=0
     for key, value in anagramas.items():
         print(key, ":", value)
+        if len(value)>1:
+            total+=len(value)
+        
+    print(total)
     
 classes()
 
