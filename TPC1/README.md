@@ -40,3 +40,5 @@ enost : ['onset', 'tenso', 'stone']
 </ul>
 
 As principais dificuldades deste trabalho foram garantir que se excluíam todos os caracteres que não eram letras. Foi possível garanti-lo imprimindo, após a construção do dicionário **anagramas**, a lista de chaves ordenada (print(sorted(anagramas.keys()))). Observando as primeiras palavras era possível verificar a existência de caracteres especiais, uma vez que os caracteres especiais são prioritários na ordenação (como por exemplo: "?bceeipr" (percibe) e "?eeinst" (siente, tienes) antes da remoção do caracter "?").
+
+Foi possível observar que existiam, no total, 231 anagramas (consideram-se anagramas quando existe mais do que uma palavra para a mesma chave).
