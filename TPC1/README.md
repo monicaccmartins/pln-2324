@@ -18,7 +18,7 @@ Foi ainda importante garantir que todas as letras estavam escritas com letra min
 Com recurso aos <em>sets</em>, foi possível eliminar palavras repetidas que seriam desnecessárias para a análise do texto.
 </li>
 <li>
-Por fim, foi criado um dicionário, ***anagramas***, em que a chave corresponde à ordenação alfabética das letras existentes nas palavras e o valor corresponde a uma lista de palavras que foram encontradas com essas letras e que, por isso, são anagramas.
+Por fim, foi criado um dicionário, <strong>anagramas</strong>, em que a chave corresponde à ordenação alfabética das letras existentes nas palavras e o valor corresponde a uma lista de palavras que foram encontradas com essas letras e que, por isso, são anagramas.
 </li>
 </ol>
 
