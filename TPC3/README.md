@@ -19,5 +19,11 @@ As duas expressões regulares realizadas a seguir foram também muito complexas.
 
 De seguida efetuou-se a marcação dos termos com "**@**".
 
-Para o ficheiro html, fora  dispostas duas colunas: "termo" e "definição" como se encontra na imagem:
+Para o ficheiro html, foram dispostas duas colunas: "Termo" e "Definição". Os termos podem ser procurados fazendo *scroll* pela página ou então carregando numa das letras da barra lateral que faz com que a página vá diretamente para o primeiro termo que começa com essa letra. Para além disso o utilizador pode voltar ao início da página carregando na seta no final da barra lateral. Por fim, adicionou-se a possibilidade de, ao carregar num termo, redirecionar o utilizador para uma página de pesquisa do mesmo no google. 
+
+De seguida encontra-se um vídeo rápido de demonstração do site:
+
+
+https://github.com/monicaccmartins/pln-2324/assets/91961697/29bc5528-432a-4bb8-b9c8-b51f2edde43f
+
 
