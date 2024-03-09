@@ -13,18 +13,25 @@ A página inicial (**home.html**) apresenta uma barra de navegação (*navigatio
 <li><strong>GitHub</strong>: redireciona para a página de GitHub da Unidade Curricular de Processamento de Linguagem Natural em Engenharia Biomédica.
 </ul>
 
+
+
 Os *icons* utilizados nesta página (nos links para a página inicial e para o github foram retirados da ferramenta e biblioteca **FontAwesome**). Para além disso, as letras da palavra "VOLEIBOL" são também *icons* retirados da mesma biblioteca.
 
 O atributo **title** foi utilizado para que o utilizador saiba o que cada um destes links aborda. 
 Foram ainda adicionador efeitos **hover** para tornar a experiência mais intuitiva.
 
-![home](https://github.com/monicaccmartins/pln-2324/assets/91961697/3e104e93-1360-4570-9ec4-7bc4cab15a6d)
+
+
+https://github.com/monicaccmartins/pln-2324/assets/91961697/a7c29ca9-6bcb-47fb-820c-2a1055098354
+
+
 
 
 A página **regras.html**, para além da barra de navegação, tem as regras básicas do voleibol acompanhadas de alguns aspetos gráficos para uma melhor compreensão das mesmas.
 
 
 https://github.com/monicaccmartins/pln-2324/assets/91961697/fb95cf3a-cbc4-4d72-9efe-b9e7ed3bbf26
+
 
 
 Na página **posicoes.html** pode ver-se um campo de voleibol e os diferentes papéis ou funções que um jogador pode ter durante um jogo.
