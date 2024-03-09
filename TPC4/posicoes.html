@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posições</title>
+    <script src="https://kit.fontawesome.com/f722050608.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    * {
+        cursor: url("https://icons.iconarchive.com/icons/icons-land/sport/128/Volleyball-Ball-icon.png") 50 50, auto;
+    }
+
+    body {
+        background-image: url("https://static.vecteezy.com/system/resources/previews/001/819/154/original/flat-volleyball-court-arena-field-with-line-template-stadium-tactic-board-illustration-vector.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        margin: 0;
+    }
+
+    .campo {
+        margin-top: 3%;
+        color: white;
+    }
+
+
+
+    .grelha {
+        display: grid;
+        grid-template-columns: 5% 35% 10% 10% 35% 5%;
+    }
+
+
+
+    .grid-item {
+        padding: 25px;
+        text-align: center;
+        font-family: Roboto, sans-serif;
+        font-size: 80px;
+    }
+
+    .button {
+        background-color: #d6bfbf00;
+        color: #FFFFFF;
+        text-align: center;
+        font-family: Roboto, sans-serif;
+        font-size: 80px;
+        border: none;
+        border-radius: 20px;
+    }
+
+    .navbar {
+        background-color: #434a98;
+        top: 0px;
+        margin-left: 1%;
+        right: 0;
+        display: column;
+        padding: 5px;
+    }
+
+
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        padding-right: 3%;
+        padding-left: 1%;
+    }
+
+    li {
+        padding-right: 5%;
+        font-family: Roboto, sans-serif;
+    }
+
+
+    i {
+        color: #ff7372;
+    }
+
+    i:hover {
+        cursor: pointer;
+        color: white;
+    }
+
+    a {
+        color: #ff7372;
+        text-decoration: none;
+    }
+
+    a:hover {
+        cursor: pointer;
+        color: white;
+    }
+
+    .button:hover {
+        background-color: #cbc8c882;
+        color: #FFFFFF;
+        text-align: center;
+        font-family: Roboto, sans-serif;
+        font-size: 80px;
+        border: none;
+    }
+
+    .tooltiptext {
+        visibility: hidden;
+        position: fixed;
+    }
+
+    .grid-item:hover .tooltiptext {
+        visibility: visible;
+        font-family: Roboto, sans-serif;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.603);
+    }
+
+    img {
+        width: 100px;
+    }
+</style>
+
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li title="Voltar à página inicial"><a href="home.html"><i class="fa-solid fa-house fa-lg"></i></a></li>
+            <li title="Regras acerca do voleibol"><a href="regras.html">Regras</a></li>
+            <li title="Posições num jogo de voleibol"><a href="posicoes.html">Posições</a></li>
+            <li title="Futebol Clube &#8220;Os Académicos&#8220;" "><a href="fca.html">FCA</a></li>
+            <li title="Federação Portuguesa de Voleibol"><a href="https://fpvoleibol.pt/fpv/">FPV</a></li>
+            <li title="Federação Internacional de Voleibol"><a href="https://www.fivb.com/">FIVB</a></li>
+            <li title="Github"><a href="https://github.com/monicaccmartins/pln-2324"><i
+                        class="fa-brands fa-github fa-lg"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="campo">
+        <div class="grelha">
+            <div class="grid-item"></div>
+            <div class="grid-item"><img src="https://static.thenounproject.com/png/2252538-200.png"></img>
+            </div>
+            <div class="grid-item"><img src="https://cdn-icons-png.freepik.com/512/10/10541.png"></img></div>
+            <div class="grid-item"><button class="button">S</button>
+                <span class="tooltiptext">Setter/Passador:
+                    <p>É responsável por decidir que jogador vai atacar;</p>
+                    <p>Geralmente, dá o segundo toque na bola.</p>
+                </span>
+            </div>
+            <div class="grid-item"><button class="button">OH</button>
+                <span class="tooltiptext">Outside hitter:
+                    <p>Ataca e bloqueia do lado esquerdo do campo.</p>
+                </span>
+            </div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"><img src="https://static.thenounproject.com/png/2252538-200.png"></img></div>
+            <div class="grid-item"><img src="https://cdn-icons-png.freepik.com/512/10/10541.png"></img></div>
+            <div class="grid-item"><button class="button">MH</button>
+                <span class="tooltiptext">Middle hitter:
+                    <p>Ataca no centro do campo e bloqueia dos dois lados;</p>
+                    <p>Geralmente, é o jogador mais alto da equipa.</p>
+                </span>
+            </div>
+            <div class="grid-item"><button class="button">L</button>
+                <span class="tooltiptext">Libero:
+                    <p>Responsável pela defesa de ataques e proteção ao bloco;</p>
+                    <p>Quando, numa rotação, vai para a linha dos 3 metros, é substituído pelo middle hitter.</p>
+                </span>
+            </div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"><img src="https://static.thenounproject.com/png/2252538-200.png"></img>
+            </div>
+            <div class="grid-item"><img src="https://cdn-icons-png.freepik.com/512/10/10541.png"></img></div>
+            <div class="grid-item"><button class="button">OH</button>
+                <span class="tooltiptext">Outside hitter:
+                    <p>Ataca e bloqueia do lado esquerdo do campo.</p>
+                </span>
+            </div>
+            <div class="grid-item"><button class="button">OPP</button>
+                <span class="tooltiptext">Opposite:
+                    <p>Ataca antes e depois da linhas dos 3 metros.</p>
+                </span>
+            </div>
+            <div class="grid-item"></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

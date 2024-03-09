@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCA</title>
+    <script src="https://kit.fontawesome.com/f722050608.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url("https://t3.ftcdn.net/jpg/03/10/30/60/240_F_310306078_aG08V6D0INRPClCbnPQNiJxZyTA7wWsM.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: Roboto, sans-serif;
+            margin: 0;
+        }
+
+
+
+        .navbar {
+            background-color: #3769f100;
+            top: 0px;
+            margin-left: 1%;
+            right: 0;
+            display: column;
+            padding: 5px;
+        }
+
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            padding-right: 3%;
+            padding-left: 1%;
+        }
+
+        li {
+            padding-right: 5%;
+            font-family: Roboto, sans-serif;
+            padding-bottom: 3%;
+        }
+
+        .grid-container {
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-top: 100px;
+            display: grid;
+            grid-template-columns: 15% 70% 15%;
+            grid-template-rows: 500px;
+            align-items: center;
+            color: #ffffff00;
+            background-color: #ffffff00;
+
+        }
+
+
+        button {
+            background-color: #ffffff00;
+            border: none;
+        }
+
+        i {
+            color: #ffffff;
+        }
+
+        i:hover {
+            cursor: pointer;
+            color: #d1d1d1be;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            cursor: pointer;
+            color: #d1d1d1be;
+        }
+
+        h1 {
+            color: white;
+            font-family: Roboto, sans-serif;
+            font-size: 80px;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .info {
+            padding-left: 25%;
+            padding-right: 25%;
+            font-family: Roboto, sans-serif;
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            padding-top: 250px;
+            line-height: 50px;
+        }
+
+
+
+        #image-container img {
+            width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li title="Voltar à página inicial"><a href="home.html"><i class="fa-solid fa-house fa-lg"></i></a></li>
+            <li title="Regras acerca do voleibol"><a href="regras.html">Regras</a></li>
+            <li title="Posições num jogo de voleibol"><a href="posicoes.html">Posições</a></li>
+            <li title="Futebol Clube &#8220;Os Académicos&#8220;" "><a href=" fca.html">FCA</a></li>
+            <li title="Federação Portuguesa de Voleibol"><a href="https://fpvoleibol.pt/fpv/">FPV</a></li>
+            <li title="Federação Internacional de Voleibol"><a href="https://www.fivb.com/">FIVB</a></li>
+            <li title="Github"><a href="https://github.com/monicaccmartins/pln-2324"><i
+                        class="fa-brands fa-github fa-lg"></i></a></li>
+        </ul>
+    </div>
+
+    <h1><i class="fa-solid fa-f fa-xs"></i> <i class="fa-solid fa-u fa-xs"></i> <i class="fa-solid fa-t fa-xs"></i> <i
+            class="fa-solid fa-e fa-xs"></i> <i class="fa-solid fa-b fa-xs"></i> <i class="fa-solid fa-o fa-xs"></i> <i
+            class="fa-solid fa-l fa-xs"></i> <br>
+
+        <i class="fa-solid fa-c fa-xs"></i> <i class="fa-solid fa-l fa-xs"></i> <i class="fa-solid fa-u fa-xs"></i> <i
+            class="fa-solid fa-b fa-xs"></i> <i class="fa-solid fa-e fa-xs"></i> <br>
+        <i class="fa-solid fa-quote-left fa-2xs"></i> <i class="fa-solid fa-o fa-2xs"></i> <i
+            class="fa-solid fa-s fa-2xs"></i> &nbsp;<i class="fa-solid fa-a fa-2xs"></i> <i
+            class="fa-solid fa-c fa-2xs"></i> <i class="fa-solid fa-a fa-2xs"></i> <i class="fa-solid fa-d fa-2xs"></i>
+        <i class="fa-solid fa-e fa-2xs"></i> <i class="fa-solid fa-m fa-2xs"></i> <i class="fa-solid fa-i fa-2xs"></i>
+        <i class="fa-solid fa-c fa-2xs"></i> <i class="fa-solid fa-o fa-2xs"></i> <i class="fa-solid fa-s fa-2xs"></i>
+        <i class="fa-solid fa-quote-right fa-2xs"></i>
+
+
+        <div class="info">
+            Criado em 1972 foi um clube eclético em representação da cidade de Barcelos.
+
+            Após quase vinte anos de pausa, o clube renasceu em 2009 e retomou a sua trajetória gloriosa. <br><br>
+
+            Neste momento o clube tem a modalidade de Voleibol bem implementada e em constante crescimento, com escalões
+            femininos
+            e masculinos. <br>
+
+            Apresenta ainda o compromisso de brevemente implementar novas modalidades para que os jovens do concelho de
+            Barcelos tenham ainda mais acesso a formação em novas modalidades.
+        </div>
+
+
+        <div class="grid-container">
+            <div><button onclick="previousImage()"><i class="fa-solid fa-chevron-left fa-2xl"></i></button></div>
+            <div id="image-container">
+                <img id="current-image"
+                    src="https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/412596328_327353290199244_2985481046729962553_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGqnKuS0h2FtQaTDf5LxI2FCfZb7KeGOw8J9lvsp4Y7DzIdPITvTV2sAyY27TevvyOcQJ8IPvueOaJowhhvY7gg&_nc_ohc=6QYmDCBD8YsAX-bjLey&_nc_ht=scontent.fopo6-1.fna&oh=00_AfDb17H8-RjkoZLoxLmBerhlgzjGn_XLH5SVxIDkAENq7A&oe=65F27DD4"
+                    alt="Image 1">
+
+            </div>
+            <div>
+                <div><button onclick="nextImage()"><i class="fa-solid fa-chevron-right fa-2xl"></i></button></div>
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+
+        <script>
+            var images = ['https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/412596328_327353290199244_2985481046729962553_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGqnKuS0h2FtQaTDf5LxI2FCfZb7KeGOw8J9lvsp4Y7DzIdPITvTV2sAyY27TevvyOcQJ8IPvueOaJowhhvY7gg&_nc_ohc=6QYmDCBD8YsAX-bjLey&_nc_ht=scontent.fopo6-1.fna&oh=00_AfDb17H8-RjkoZLoxLmBerhlgzjGn_XLH5SVxIDkAENq7A&oe=65F27DD4',
+                'https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/386350428_281963881404852_6708639604724069545_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEda3HSkUaVCfNECH6_4lJ-nMuMaeI3o7-cy4xp4jejv5a0-cUHa9rRZ5YEYBkY4_SW4hTTiqFCgfkVeXW93KTm&_nc_ohc=b9t4bgkmLlsAX9sM-gi&_nc_ht=scontent.fopo6-1.fna&oh=00_AfDrIPjdXU2VkqH9ikh3dmuqrWPzKJPy_S3QRrWhIfoEXw&oe=65F0D582',
+                'https://scontent.fopo6-2.fna.fbcdn.net/v/t39.30808-6/386399138_281963794738194_5286865483227892157_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEiq4kJ1Wx_BxsqLkNh4vInBoa2uoQb-KYGhra6hBv4piVs-YWDmWkmVIlWudxV-aWG0My3TmAAElKSj8ja-pxr&_nc_ohc=LcLZOKOVJ_oAX_TQ1tG&_nc_ht=scontent.fopo6-2.fna&oh=00_AfBNe6VCf6G_Sr8lbJvXf-n3EdW8AS-pCuM-hzqC74FSPA&oe=65F1CB72',
+                'https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/362218294_239136402334705_3451161568274712044_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEI01lrjFRrsaMeRwU1GiPjLNzmuqg5GwQs3Oa6qDkbBA13_igDpRycKgku0vLdTgdPGsT7mZY-rxrSoyP0rucU&_nc_ohc=MYFSPz5xW_sAX8KZML6&_nc_ht=scontent.fopo6-1.fna&oh=00_AfCl3Cb3vB3kH4VN41Vn_pw-8ZjYNGOwIih-y5EXXJLTMw&oe=65F27BDE',
+                'https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/386345680_279916738256671_8308864484843434291_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFi1yG94plI-d2PtHDq_JuBp9TJdpnItcqn1Ml2mci1ys484CxhKxFYBDVs8j5NWhGYGueI5MetQW8glNdncxIe&_nc_ohc=ltkpDl4dQnAAX8TsZTs&_nc_ht=scontent.fopo6-1.fna&oh=00_AfBiaC6GAllupwnmySsrn2iqjlnARluYVqX4SiFVQJQHBg&oe=65F21CE3',
+                'https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/387153477_279916781590000_4729884742433141239_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF_EwGFmmwOYSeNjuxtWwdqL4gOXKUMz3sviA5cpQzPe6Mqyk1keG4p5B4xJjSfxr7dBmGFehWp0fMJo19n_8Vu&_nc_ohc=w6O9eqfN-88AX_63ezr&_nc_ht=scontent.fopo6-1.fna&oh=00_AfAO6My-DAqgRHsSZF34hfnk47RC8qc5TMIavRDS7sXxUQ&oe=65F1AB75',
+                'https://scontent.fopo6-1.fna.fbcdn.net/v/t39.30808-6/362616615_239136045668074_1385998915139362426_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFsbrE-mEAmJO5_fywoyNsp2f-v8qeof_LZ_6_yp6h_8lmDzMvWRZ-NgUjxYoP2ZlG7RKr3ePdL0Oi61oXQ75oc&_nc_ohc=RC3M-S1juRgAX8YuHKD&_nc_ht=scontent.fopo6-1.fna&oh=00_AfDYJThe6oZu_qHGjDKsEourEcNicbfN4lgOHjFX_21LYw&oe=65F23027'
+                ];
+            var currentIndex = 0;
+
+            function nextImage() {
+                currentIndex++;
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
+                }
+                document.getElementById('current-image').src = images[currentIndex];
+            }
+
+            function previousImage() {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1;
+                }
+                document.getElementById('current-image').src = images[currentIndex];
+            }
+
+        </script>
+</body>
+
+</html>
