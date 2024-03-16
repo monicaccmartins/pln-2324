@@ -34,3 +34,5 @@ O resultado da página html desenvolvida foi o seguinte:
 
 ![image](https://github.com/monicaccmartins/pln-2324/assets/91961697/3c232ea2-0e9d-466a-b09c-de5b1d1cb654)
 
+
+Este trabalho permitiu estudar, compreender e manipular a estrutura de dados json. Sendo este o principal desafio foi também, ao mesmo tempo, a parte mais interessante.
