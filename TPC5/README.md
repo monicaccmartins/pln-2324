@@ -25,5 +25,7 @@ Posto isto, o ficheiro <strong>etiquetador.py</strong> é responsável por:
 
 ![image](https://github.com/monicaccmartins/pln-2324/assets/91961697/87ee789d-8921-44a4-bf6f-1539ee2902c9)
 
-
+<li>Construção de um ficheiro html (<strong>livro.html</strong>) com o conteúdo do livro acima referido e "etiquetação" dos termos com descrição no dicionário médico, com recurso ao parâmetro "title" do html.</li>
 </ul>
+
+O resultado da página html desenvolvida foi o seguinte:
