@@ -29,3 +29,8 @@ Posto isto, o ficheiro <strong>etiquetador.py</strong> é responsável por:
 </ul>
 
 O resultado da página html desenvolvida foi o seguinte:
+
+![image](https://github.com/monicaccmartins/pln-2324/assets/91961697/8337739b-223e-49eb-83fd-cd66b2225456)
+
+![image](https://github.com/monicaccmartins/pln-2324/assets/91961697/3c232ea2-0e9d-466a-b09c-de5b1d1cb654)
+
