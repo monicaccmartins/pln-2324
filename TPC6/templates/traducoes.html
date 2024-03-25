@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+
+{%block body%}
+
+
+    <div class="list-group m-4">
+        <table class="table table-hover sticky-header">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col"><h2 class="text-start display-5">Conceito</h2></th>
+                <th scope="col"><h2 class="text-start display-5">Tradução</h2></th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for conceito in conceitos%}
+                    <tr>
+                        <td><a href="/conceitos/{{conceito}}" class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{{conceito}}</a></td>
+                        <td>{{conceitos[conceito]["en"]}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+    
+
+
+
+{%endblock%}
