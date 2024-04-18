@@ -1,0 +1,43 @@
+{% extends 'layout.html'%}  # sou o filho
+
+{%block body%}
+
+
+<nav class="navbar fixed bg-white navbar-light justify-content-between">
+    <div class="d-flex justify-content align-items-center">
+    <h1 class="text-start display-5">Conceitos</h1> 
+    <a href="/adicionarconceito"><i class="fa-solid fa-plus fa-2xl text-dark" style="margin-left: 15px;"></i></a>
+    </div>
+    <form class="form-inline" action="{{ url_for('listarconceitos') }}" method="GET">
+        <div class="input-group">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </div>
+    </form>
+</nav>
+
+<a id="back-to-top" href="#" style="margin-bottom: 100px; width: fit-content; margin-left: 93%;" class="fixed-bottom btn btn-secondary btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+{% if pesquisa %}
+<h3>Resultados para "{{pesquisa}}"</h3>
+<p>{{res}} resultados encontrados</p>
+<div class="list-group mt-4">
+    {%for conceito in conceitos%}
+        <a href="/conceitos/{{conceitos[conceito]["original"]}}" class="list-group-item list-group-item-action">{{conceito | safe}}</a> 
+    {%endfor%}
+</div>
+{% else %}
+
+    <div class="list-group mt-4">
+        {%for conceito in conceitos%}
+        <a href="/conceitos/{{conceito}}" class="list-group-item list-group-item-action">{{conceito | safe}}</a> 
+        {%endfor%}
+    </div>
+{% endif %}
+    
+
+
+
+
+{%endblock%}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha1/js/bootstrap.min.js"></script>

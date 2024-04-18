@@ -1,0 +1,37 @@
+{% extends 'layout.html'%}
+
+{%block body%}
+<div class="container m-0 text-center d-flex align-items-center">
+      <div class="col-sm-1 m-0">
+        <img width="50px" src="https://static.thenounproject.com/png/469207-200.png"></img>
+      </div>
+      <div class="col-sm-9 m-0">
+        <h1 class="text-start display-4">{{termo}}<button class="btn" onclick="delete_conceito('{{termo}}')"><i class="fa-solid fa-trash fa-2xl"></i></button></h1>
+        
+    </div>
+</div>
+
+    
+<p class="m-5 display-6 fs-3">{{conceitos[termo]["desc"]}}</p> 
+      
+
+
+<div class="d-grid gap-2 d-md-block m-5 mb-2">
+  <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    English
+  </a>
+  <a class="btn btn-secondary" target="_blank" role="button" href="https://translate.google.com/?hl=pt&sl=pt&tl=it&text={{termo}}&op=translate">Italian</a>
+  <a class="btn btn-secondary" target="_blank" role="button" href="https://translate.google.com/?hl=pt&sl=pt&tl=fr&text={{termo}}&op=translate">French</a>
+</div>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body m-5 mt-0">
+    {{conceitos[termo]["en"]}}
+  </div>
+</div>
+<div class = "d-flex justify-content-center">
+  <a href="javascript:history.go(-1);" role="button" class = "d-flex justify-content-center btn btn-secondary">Voltar</a>
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,64 @@
+{% extends 'layout.html'%}  # sou o filho
+
+{%block body%}
+
+
+<nav class="navbar fixed bg-white navbar-light justify-content-between">
+    <form class="form-inline" action="{{ url_for('pesquisa') }}" method="GET">
+        <div class="input-group">
+            <input class="form-control mr-sm-2" type="search" name="query_conceito_ou_desc" placeholder="Search" aria-label="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </div>
+    </form>
+</nav>
+
+<a id="back-to-top" href="#" style="margin-bottom: 100px; width: fit-content; margin-left: 93%;" class="fixed-bottom btn btn-secondary btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+
+<div class="list-group m-4">
+    {% if pesquisa %}
+    <h3>Resultados para "{{pesquisa}}"</h3>
+    <p>{{res}} resultados encontrados</p>
+    <table class="table table-hover sticky-header">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col"><h2 class="text-start display-5">Conceito</h2></th>
+            <th scope="col"><h2 class="text-start display-5">Definição</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for conceito in conceitos%}
+                <tr>
+                    <td><a href="/conceitos/{{conceitos[conceito]["original"]}}" class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{{conceito | safe}}</a></td>
+                    <td>{{conceitos[conceito]["desc"] | safe}}</td>
+                </tr>
+            {%endfor%}
+    {% else %}
+        <table class="table table-hover sticky-header">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col"><h2 class="text-start display-5">Conceito</h2></th>
+                <th scope="col"><h2 class="text-start display-5">Definição</h2></th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for conceito in conceitos%}
+                    <tr>
+                        <td><a href="/conceitos/{{conceito}}" class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{{conceito}}</a></td>
+                        <td>{{conceitos[conceito]["desc"] | safe}}</td>
+                    </tr>
+                {%endfor%}
+    {% endif %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+{%endblock%}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha1/js/bootstrap.min.js"></script>

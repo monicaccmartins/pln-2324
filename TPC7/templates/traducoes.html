@@ -1,0 +1,30 @@
+{% extends 'layout.html'%}
+
+{%block body%}
+
+<a id="back-to-top" href="#" style="margin-bottom: 100px; width: fit-content; margin-left: 93%;" class="fixed-bottom btn btn-secondary btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+    <div class="list-group m-4">
+        <table class="table table-hover sticky-header">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col"><h2 class="text-start display-5">Conceito</h2></th>
+                <th scope="col"><h2 class="text-start display-5">Tradução</h2></th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for conceito in conceitos%}
+                    <tr>
+                        <td><a href="/conceitos/{{conceito}}" class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{{conceito}}</a></td>
+                        <td>{{conceitos[conceito]["en"]}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+    
+
+
+
+{%endblock%}
