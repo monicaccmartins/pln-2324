@@ -22,6 +22,7 @@ Para possibilitar a comparação da qualidade dos modelos, foram usados os segui
 
 Na tabela seguinte apresentam-se os parâmetros dos diferentes modelos testados, bem como o resultado obtidopara cada um dos critérios:
 
+![image](https://github.com/monicaccmartins/pln-2324/assets/91961697/c320811a-8965-4fc4-99bb-1f1b620bbeab)
 
 
 Verifica-se que o modelo que apresentou uma performance mais "perto" do esperado foi o modelo que incluía apenas o livro "Harry Potter e a Câmara dos Segredos", com os parâmetros 100, 5, 1, 1, 20, 3 (para os valores de vector_size, window, SG, Min_count, epochs, workers, respetivamente).
