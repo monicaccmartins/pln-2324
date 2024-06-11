@@ -1,0 +1,214 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary"  style="background-color: #5a441a;">
+    <div class="container-fluid">
+
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active" href="{{ url_for('pesquisa_conc', lang='en') }}">En</a>
+   </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{{ url_for('pesquisa_conc', lang='pt') }}">Pt</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active"   href="{{ url_for('pesquisa_conc', lang='es') }}">Es</a>
+    </li>
+  </ul>
+
+  <div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Add entry
+    </button>
+
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeModal">
+      Remove entry
+    </button>
+  </div>
+</div>
+</nav>
+
+
+{% if warning %}
+
+<div class="alert alert-danger" role="alert">
+  {{warning}}
+</div>
+{%endif%}
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add entry</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="add_entrada_form" action="/add_entrada" method="POST">
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                      <input type="text" class="form-control" name="conc" id="validationServer01" placeholder="Conceito" aria-label="Conceito" aria-describedby="basic-addon1" required>
+                  </div>
+
+                  <div class="input-group">
+                      <span class="input-group-text">Definição</span>
+                      <textarea class="form-control" aria-label="Definição" name="def"></textarea>
+                  </div>
+
+                  <label for="exampleDataList" class="form-label">Áreas de aplicação</label>
+                  <input class="form-control mb-3" list="datalistOptions" id="areasInput" placeholder="Type to search...">
+                  <datalist id="datalistOptions">
+                      {% for area in areas %}
+                          <option value="{{area}}">
+                      {% endfor %}
+                  </datalist>
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="addArea" onclick="addBadge('areasInput', 'selectedAreas')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="areasAp" id="areasAp">
+                  <div id="selectedAreas" class="mb-3"></div>
+
+                  <label for="exampleDataList" class="form-label">Fontes</label>
+                  <input class="form-control mb-3" id="fontesInput" placeholder="Source 1">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="addFonte" onclick="addBadge('fontesInput', 'selectedFontes')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="fontesAp" id="fontesAp">
+                  <div id="selectedFontes" class="mb-3"></div>
+
+                  <br>
+
+                  <label for="exampleDataList" class="form-label">Sinónimos</label>
+
+                  <input class="form-control" id="SinInput" name="sinonimos" placeholder="SIN 1">
+                  <br>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="addSin" onclick="addBadge('SinInput', 'selectedSins')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="SinAp" id="SinAp">
+                  <div id="selectedSins" class="mb-3"></div>
+
+                  <br>
+
+                  <input type="text" class="form-control mb-3" id="relacionadoInput" placeholder="Related 1">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="addFonte" onclick="addBadge('relacionadoInput', 'selectedRelacionados')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="relacionadoAp" id="relacionadoAp">
+                  <div id="selectedRelacionados" class="mb-3">
+                  </div>
+
+                  <br>
+
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Index_Remissivo</span>
+                      <input type="text" class="form-control" placeholder="Index Remissivo" name="index_rem" aria-label="Index remissivo" aria-describedby="basic-addon1">
+                  </div>
+
+                  <div class="input-group">
+                    <span class="input-group-text">Nota</span>
+                    <textarea class="form-control" aria-label="Nota" name="nota"></textarea>
+                </div>
+
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button id='submitButton' class="btn btn-primary" onclick="handleSubmit(event)">Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal Remove-->
+<div class="modal fade" id="removeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Remover entrada</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/apagar_entrada" method="POST">
+
+          <div class="mb-3">
+            <label for="RemoveConceito" class="form-label">Id conceito</label>
+            <input type="number" class="form-control" name="rc" placeholder="Id válido" required>
+          </div>
+
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger">Remove</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<a id="back-to-top" href="#" style="margin-bottom: 90px; width: fit-content; margin-left: 93%;" class="fixed-bottom btn btn-secondary btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+{% if pesquisa %}
+<h3>Resultados para "{{pesquisa}}"</h3>
+<p>{{res}} resultados encontrados</p>
+<table class="table table-hover sticky-header">
+    <thead class="thead-light">
+        <tr>
+        <th scope="col"><h2 class="text-start display-5">Conceito</h2></th>
+        <th scope="col"><h2 class="text-start display-5">Definição</h2></th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for conceito in conceitos%}
+            <tr>
+                <td><a href='/conceitos/{{lang}}/{{conceitos[conceito]["original"]}}' class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">{{conceito | safe}}</a></td>
+                <td>{{conceitos[conceito]["desc"] | safe}}</td>
+            </tr>
+        {%endfor%}
+{% else %}
+<br>
+<br>
+<table id="dados"  class="table table-hover sticky-header">
+    <thead class="thead-light">
+        <tr>
+          <th scope="col"><h2 class="text-start display-5">Conceito</h2></th>
+          <th scope="col"><h2 class="text-start display-5">Fonte(s)</h2></th>
+          <th scope="col"><h2 class="text-start display-5">Semelhante(s)</h2></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for conceito in conceitos %}
+        <tr>
+            <td><a class="list-group-item list-group-item-action" href="/conceitos/{{lang}}/{{conceito}}">{{conceitos[conceito].Termo}}</a></td>
+            <td>{{', '.join(conceitos[conceito].Fontes)}}</td>
+            <td>{{', '.join(conceitos[conceito].Sinonimos)}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+    
+
+{% endblock %}
+
+
+
+
+
+

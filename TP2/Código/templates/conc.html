@@ -1,0 +1,372 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% set batches = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] %}
+
+
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary"  style="background-color: #5a441a;">
+
+  <div class="container-fluid">
+    <div>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('consultar_Conceitos', lang='en', id_conc = id_conc ) }}">En</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('consultar_Conceitos', lang='pt', id_conc = id_conc ) }}">Pt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('consultar_Conceitos', lang='es', id_conc = id_conc ) }}">Es</a>
+        </li>
+      </ul>
+    </div>  
+  <div>
+  <div class="mb-0">
+    <form action="/change_language" method="GET" class="mb-0">
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <label for="languageSelect" class="align-middle me-2" >Select Language:</label>
+        </li>
+        <li class="nav-item">
+          <select class="form-select" aria-label="Language Select" name="lang">
+            <option selected disabled>Choose a language</option>
+            <option value="ar">Arabic</option>
+            <option value="bg">Bulgarian</option>
+            <option value="cs">Czech</option>
+            <option value="da">Danish</option>
+            <option value="de">German</option>
+            <option value="el">Greek</option>
+            <option value="et">Estonian</option>
+            <option value="fi">Finnish</option>
+            <option value="fr">French</option>
+            <option value="hu">Hungarian</option>
+            <option value="id">Indonesian</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="lt">Lithuanian</option>
+            <option value="lv">Latvian</option>
+            <option value="nl">Dutch</option>
+            <option value="pl">Polish</option>
+            <option value="ro">Romanian</option>
+            <option value="ru">Russian</option>
+            <option value="sk">Slovak</option>
+            <option value="sl">Slovenian</option>
+            <option value="sv">Swedish</option>
+            <option value="tr">Turkish</option>
+            <option value="uk">Ukrainian</option>
+          </select>
+        </li>
+        <li class="nav-item">
+          <input type="hidden" name="id_conc" value="{{ id_conc }}">
+          <button type="submit" id="langButton" class="btn btn-primary">Submit</button>
+        </li>
+      </ul>
+    </form> 
+  </div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Change entry
+  </button>
+
+</nav>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ch_tr["Change entry"]}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="add_entrada_form" action="/alterar_entrada/{{lang}}/{{id_conc}}" method="POST">
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                      <input type="text" class="form-control" name="conc" id="validationServer01" placeholder="{{conceito.Termo}}" aria-label="Conceito" aria-describedby="basic-addon1" required>
+                  </div>
+
+                  <div class="input-group">
+                      <span class="input-group-text">{{ch_tr.Definicao}}</span>
+                      <textarea class="form-control" aria-label="Definição" name="def">{{conceito.Definicao}}</textarea>
+                  </div>
+
+                  <br>
+                  <label  class="form-label"></label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">{{ch_tr["Variante"]}}</span>
+                    <textarea class="form-control" aria-label="Definição" name="var">{{conceito.Variante}}</textarea>
+                </div>
+
+                  <label for="exampleDataList" class="form-label">{{ch_tr["Área(s) de aplicação"]}}</label>
+                  <input class="form-control mb-3" list="datalistOptions" id="areasInput" placeholder="Type to search...">
+                  <datalist id="datalistOptions">
+                      {% for area in areas %}
+                          <option value="{{area}}">
+                      {% endfor %}
+                  </datalist>
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="addArea" onclick="addBadge('areasInput', 'selectedAreas')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="areasAp" id="areasAp">
+                  <div id="selectedAreas" class="mb-3">
+                    {% for a in conceito["Área(s) de aplicação"] %}
+                      {% set b = batches[loop.index-1] %}
+                      <span class="badge rounded-pill text-bg-{{b}}">{{a}}</span>
+                    {% endfor %}
+                  </div>
+                  <label for="exampleDataList" class="form-label">{{ch_tr.Fontes}}</label>
+                  <input class="form-control mb-3" id="fontesInput" placeholder="Source 1">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="addFonte" onclick="addBadge('fontesInput', 'selectedFontes')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="fontesAp" id="fontesAp">
+                  <div id="selectedFontes" class="mb-3">
+
+                    {% for f in conceito.Fontes %}
+                      {% set b = batches[loop.index-1] %}
+                      <span class="badge rounded-pill text-bg-{{b}}">{{f}}</span>
+                    {% endfor %}
+                  </div>
+
+                  <br>
+
+                  <label for="exampleDataList" class="form-label">{{ch_tr.Sinonimos}}</label>
+
+                  <input class="form-control" id="SinInput" name="sinonimos" placeholder="SIN 1">
+                  <br>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="addSin" onclick="addBadge('SinInput', 'selectedSins')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="SinAp" id="SinAp">
+                  <div id="selectedSins" class="mb-3">
+                    {% for s in conceito.Sinonimos %}
+                    {% set b = batches[loop.index-1] %}
+                    <span class="badge rounded-pill text-bg-{{b}}">{{s}}</span>
+                  {% endfor %}
+                  </div>
+
+                  <br>
+
+
+                  <label for="exampleDataList" class="form-label">{{ch_tr.Relacionado}}</label>
+                  <input class="form-control mb-3" id="relacionadoInput" placeholder="Related 1">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="addFonte" onclick="addBadge('relacionadoInput', 'selectedRelacionados')">+</button>
+                  </div>
+                  <br>
+                  <input type="hidden" name="relacionadoAp" id="relacionadoAp">
+                  <div id="selectedRelacionados" class="mb-3">
+
+                    {% for r in conceito.Relacionado %}
+                      {% set b = batches[loop.index-1] %}
+                      <span class="badge rounded-pill text-bg-{{b}}">{{r}}</span>
+                    {% endfor %}
+                  </div>
+
+                  <br>
+
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">{{ch_tr["Index Remissivo"]}}</span>
+                      <input type="text" class="form-control" placeholder="{{conceito.Index_Remissivo}}" name="index_rem" aria-label="Index remissivo" aria-describedby="basic-addon1">
+                  </div>
+
+
+                  <div class="input-group">
+                    <span class="input-group-text">{{ch_tr.Nota}}</span>
+                    <textarea class="form-control" aria-label="Nota" name="nota">{{conceito.Nota}}</textarea>
+                </div>
+                <br>
+                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-warning" for="btnradio1">{{ch_tr["Change this idiom"]}}: {{lang}}</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-danger" for="btnradio2">{{ch_tr["Change all idioms"]}}</label>
+                  
+                  </div>
+
+                  <input type="hidden" id="selectedRadio" name="selectedRadio" value="btnradio1">
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ch_tr.Close}}</button>
+                      <button id='submitButton' class="btn btn-primary" onclick="handleSubmit(event)">{{ch_tr.Submit}}</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% if warning %}
+<div class="alert alert-success" role="alert">
+  {{warning}}
+</div>
+
+{% endif%}
+<div class="m-5">
+  <div class="card">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <div class="display-4">{{conceito.Termo}}</div>
+      <button type="button" class="btn" data-bs-toggle="popover" data-bs-title="Google Translate" data-bs-trigger="hover focus" data-bs-content="Some of the elements of this page were translated with Google Translate">
+        <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 512 512" id="google-translate">
+          <path fill="#e6e6e6" d="M479.068 96h-216.32l-22.515 87.1-8.083 57.242 43.329 120.845 6.957 146.639h196.633c18.184 0 32.932-14.748 32.932-32.932V128.932C512 110.748 497.252 96 479.068 96z"></path>
+          <path fill="#3a5bbc" d="m368.696 416-86.261 91.826L251.882 416l12.466-33.479z"></path>
+          <path fill="gray" d="M469.565 244.174v-20.87h-79.304v-29.217h-20.87v29.217H297.92v20.87h115.89c-6.446 13.572-17.621 35.215-32.978 58.035-14.132-17.649-23.062-29.931-23.168-30.077l-6.129-8.445-16.892 12.255 6.127 8.445c.477.658 10.876 14.963 27.338 35.3-11.222 13.749-31.808 36.106-42.655 46.952l14.756 14.756c9.362-9.362 28.774-30.214 41.426-45.327 16.459 19.553 32.523 37.194 47.854 52.526l7.378 7.378 14.758-14.755-7.378-7.378C428.408 358 411.728 339.575 394.6 319.04c22.133-31.823 36.48-61.956 42.2-74.866h32.765z"></path>
+          <path fill="#518ef8" d="M349.329 357.523 368.696 416H32.932C14.734 416 0 401.252 0 383.068V37.106C0 18.922 14.734 4.174 32.932 4.174h199.416L262.748 96l45.607 137.739 40.974 123.784z"></path>
+          <path fill="#fff" d="M149.301 287.374c-42.77 0-77.565-34.795-77.565-77.565s34.795-77.565 77.565-77.565c20.704 0 40.182 8.065 54.845 22.712l-14.749 14.766c-10.723-10.71-24.961-16.608-40.097-16.608-31.263 0-56.696 25.433-56.696 56.696s25.433 56.696 56.696 56.696c27.698 0 50.82-19.967 55.733-46.261h-55.731v-20.87h77.565v10.435c-.001 42.769-34.796 77.564-77.566 77.564z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="mb-3">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <img style="width: 50px; margin-right: 1%;" src="https://cdn-icons-png.freepik.com/512/1582/1582286.png">
+      <h2 class="card-title" style="margin-right: 1%;">{{ch_tr.Definicao}}:</h2>
+      {% if conceito.Definicao %}
+        <p style="margin: 0%;" class="lead"><b>{{conceito.Definicao}}</b></p>
+      {% else %}
+        <p style="margin: 0%;" class="lead"> {{ch_tr.Definicao}} {{ch_tr['não disponível']}}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <img style="width: 50px; margin-right: 1%;" src="https://static.thenounproject.com/png/4334136-200.png">
+      <h2 class="card-title" style="margin-right: 1%;">{{ch_tr.Variante}}:</h2>
+      {% if conceito.Variante %}
+        <p style="margin: 0%;" class="lead"><b>{{conceito.Variante}}</b></p>
+      {% else %}
+        <p style="margin: 0%;" class="lead"> {{ch_tr.Variante}} {{ch_tr['não disponível']}}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <img style="width: 50px; margin-right: 1%;" src="https://cdn-icons-png.flaticon.com/512/4804/4804197.png">
+      <h2 class="card-title" style="margin-right: 1%;">{{ch_tr['Área(s) de aplicação']}}:</h2>
+      {% if conceito["Área(s) de aplicação"] %}
+        <p style="margin: 0%;" class="lead">{{'; '.join(conceito["Área(s) de aplicação"])}}</p>
+      {% else %}
+        <p style="margin: 0%;" class="lead"> {{ch_tr['Área(s) de aplicação']}} {{ch_tr['não disponível'] }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <img style="width: 50px; margin-right: 1%;" src="https://icons.veryicon.com/png/o/business/official-icon-of-the-insurer/term.png">
+      <h2 class="card-title" style="margin-right: 1%;">{{ch_tr.Fontes}}: </h2>
+
+        {% if conceito.Fontes %}
+          {% for f in conceito["Fontes"] %}
+            {% set b = batches[loop.index-1] %}
+            <p style="margin: 0%; margin-right: 1%;" class="lead"><span class="badge bg-{{b}}">{{f}}</span></p>
+          {% endfor %}
+        {% else %}
+          <p style="margin: 0%;" class="lead"> {{ch_tr.Fontes}} {{ch_tr['não disponível']}}</p>
+        {% endif %}
+
+    </div>
+  </div>
+
+
+
+  {% if conceito.Relacionado %}
+
+    <div class="mb-3">
+      <div class="card-body d-flex align-content-center align-items-center">
+        <img style="width: 50px; margin-right: 1%;" src="https://static.thenounproject.com/png/3797140-200.png">
+        <h2 class="card-title" style="margin-right: 1%;">{{ch_tr.Relacionado}}: </h2>
+          {% for r in conceito["Relacionado"] %}
+            {% set b = batches[loop.index-1] %}
+            <a class="lead" href = "/conceitos/{{lang}}/{{r}}"><span class="badge bg-{{b}}">{{conceitos[r].Termo}}</span></a>
+          {% endfor %}
+      </div>
+    </div>
+
+  {% endif %}
+
+
+  {% if conceito.Sinonimos %}
+  <div class="mb-3">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <img style="width: 50px; margin-right: 1%;" src="https://cdn0.iconfinder.com/data/icons/octicons/1024/sync-512.png">
+      <h2 class="card-title" style="margin-right: 1%;">{{ch_tr.Sinonimos}}: </h2>
+        <p style="margin: 0%;" class="lead">{{'; '.join(conceito["Sinonimos"])}}</p>
+      </div>
+    </div>
+  {% endif %}
+
+
+  {% if conceito["Categoria gramatical"] %} 
+
+  <div class="mb-3">
+    <div class="card-body d-flex align-content-center align-items-center">
+      <img style="width: 50px; margin-right: 1%;" src="https://cdn1.iconfinder.com/data/icons/website-library-part-3/48/Website-Check-Spelling-Grammar-512.png">
+      <h2 class="card-title" style="margin-right: 1%;">{{ch_tr["Categoria gramatical"]}}: </h2>
+        <p style="margin: 0%;" class="lead">{{'; '.join(conceito["Categoria gramatical"])}}</p>
+    </div>
+  </div>
+
+  {% endif %}
+
+
+
+  {% if conceito.Nota %}
+    <div class="mb-3">
+      <div class="card-body d-flex align-content-center align-items-center">
+        <img style="width: 50px; margin-right: 1%;"  src="https://cdn.icon-icons.com/icons2/2715/PNG/512/warning_icon_172115.png">
+        <h2 class="card-title" style="margin-right: 1%;">{{ch_tr.Nota}}: </h2>
+          <p style="margin: 0%;" class="lead">{{conceito.Nota}}</p>
+      </div>
+    </div>
+
+  {% endif %}
+
+
+
+  {% if conceito.Index_Remissivo %}
+
+
+      <div class="card">
+        <div class="card-header">
+          Entrada remissiva
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+              <a class="nav-link active"   href="{{ url_for('consultar_Conceitos', lang='es', id_conc = conceito.Index_Remissivo ) }}">{{ conceitos[conceito.Index_Remissivo].Termo }}</a>
+          </blockquote>
+        </div>
+      </div>
+
+</div>
+
+{% endif %}
+
+{% set number = id_conc | int %}
+<div class="d-flex justify-content-center m-5">
+  {% if number > 1 %}
+    <a class="btn btn-light mx-2" href="{{ url_for('consultar_Conceitos', lang=lang, id_conc=number - 1) }}"><image style="width: 40px;" src="https://cdn.icon-icons.com/icons2/1946/PNG/512/1904658-arrow-arrow-left-change-direction-left-next-undo_122508.png"></image></a>
+  {% else %}
+    <button class="btn btn-light mx-2" disabled><image style="width: 40px;" src="https://cdn.icon-icons.com/icons2/1946/PNG/512/1904658-arrow-arrow-left-change-direction-left-next-undo_122508.png"></image></button>
+  {% endif %}
+
+    <a class="btn btn-light mx-2" href="{{ url_for('consultar_Conceitos', lang=lang, id_conc=number + 1) }}"><image style="width: 40px;" src="https://cdn.icon-icons.com/icons2/1946/PNG/512/1904671-arrow-arrow-right-change-direction-next-page-right_122521.png"></image></a>
+
+</div>
+
+{% endblock %}
+
+
+
